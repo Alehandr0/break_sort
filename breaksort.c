@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#define ZOOM 16
+#define ZOOM 16 // эта константа отвечает за то, на какие по размеру части будет разбит вспомогательный массив
+// можно попробовать её менять
 
 void breaksort(int massiv[], int n)
 {
