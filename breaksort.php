@@ -27,6 +27,7 @@ SOFTWARE.
 define("ZOOM", 16);
 
 function breakSort(&$a)
+
 {
 	$n=count($a);
 
@@ -62,11 +63,7 @@ function breakSort(&$a)
 		0==$c[$d]&&$c[$d]=1;
 	}
 	$e = 0;
-	for($i=1, $z=$b+1; $i<$z; $i++)
-	{
-		if ($c[$i] == 0 && $c[$i - 1] == 1) $e++;
-	}
-	$e++;
+	for($i=1, $z=$b+1; $i<$z; 0==$c[$i]&&1==$c[$i-1]&&$e++, $i++){}$e++;
 	$f=array(1+$e);
 	for($i=0; $i<$e; $f[$i]=0, $i++){}
 	$f[0] = ZOOM;
@@ -75,31 +72,11 @@ function breakSort(&$a)
 	for($i=0; $i<$e; $g[$i]=0, $i++){}
 	$h = 1;
 	$m = 1 + $b;
-	for($i=1; $i<=$m; $i++)
-	{
-		if ($c[$i] == 0 && $c[$i - 1] == 1)
-		{
-			$f[$h] = $i - 2;
-			$h++;
-		}
-	}
+	for($i=1; $i<=$m; 0==$c[$i]&&1==$c[$i-1]&&$f[$h]=$i-2&&$h++, $i++){}
 	$h = 1;
-	for($i=1; $i<=$m; $i++)
-	{
-		if ($c[$i] == 1 && $c[$i - 1] == 0)
-		{
-			$g[$h] = $i;
-			$h++;
-		}
-	}
-	for($i=1; $i<$e; $i++)
-	{
-		$f[$i] = $f[0] * $f[$i];
-	}
-	for($i=1; $i<$e; $i++)
-	{
-		$g[$i] = $f[0] * $g[$i] - 1;
-	}
+	for($i=1; $i<=$m; 1==$c[$i]&&0==$c[$i-1]&&$g[$h]=$i&&$h++, $i++){}
+	for($i=1; $i<$e; $f[$i]=$f[0]*$f[$i], $i++){}
+	for($i=1; $i<$e; $g[$i]=$f[0]*$g[$i]-1, $i++){}
 	$f[$e] = $a[$n - 1];
 	$o=array(1+$e);
 	for($i=1; $i<$n; $i++)
@@ -161,5 +138,4 @@ function breakSort(&$a)
 		}
 	}
 }
-
 ///*///
