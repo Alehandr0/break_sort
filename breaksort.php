@@ -27,10 +27,8 @@ SOFTWARE.
 define("ZOOM", 16);
 
 function breakSort(&$a)
-
 {
 	$n=count($a);
-	$zoom=ZOOM;
 
 	for ($i=$n-1; $i>0; $i--)
 	{
@@ -53,14 +51,14 @@ function breakSort(&$a)
 	}
 	$a[$n - 1] -= $a[0];
 
-	$b = $a[$n - 1] / $zoom;
+	$b = $a[$n - 1] / ZOOM;
 	$c=array(1+$b);
 	for ($i=0; $i<$b; $c[$i]=0, $i++){}
 	$c[0] = 1;
 	$c[1] = 1;
 	for ($i=1; $i<$n; $i++)
 	{
-		$d = 1 + floor($a[$i] / $zoom);
+		$d = 1 + floor($a[$i] / ZOOM);
 		0==$c[$d]&&$c[$d]=1;
 	}
 	$e = 0;
@@ -71,7 +69,7 @@ function breakSort(&$a)
 	$e++;
 	$f=array(1+$e);
 	for ($i=0; $i<$e; $f[$i]=0, $i++){}
-	$f[0] = $zoom;
+	$f[0] = ZOOM;
 	$f[$e] = $b;
 	$g=array($e);
 	for ($i=0; $i<$e; $i++){$g[$i]=0;}
